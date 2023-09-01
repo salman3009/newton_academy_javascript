@@ -1,0 +1,36 @@
+<script>
+    class ValidationError extends Error {
+        constructor(message, field) {
+            super(message);
+            this.field = field;
+            this.name = "ValidationError";
+        }
+    }
+
+    function findTax() {
+
+        try {
+            throw new ValidationError("Invalid email address", "email");
+        } catch (error) {
+            if (error instanceof ValidationError) {
+                console.log("Validation error:", error.message, "Field:", error.field);
+            } else {
+                console.log("An error occurred:", error.message);
+            }
+        }
+
+    }
+findTax();
+
+
+
+// function findTax() {
+// try {
+//     throw new Error("Invalid email address");
+// } catch (error) {
+//         console.log("An error occurred:", error.message);
+    
+// }
+// }
+// findTax();
+</script>
