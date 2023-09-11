@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <nav class="navbar">
+        <section class="navbar-logo">
+            <img src="https://entrackr.com/storage/2022/04/Newton-image.jpg" alt="newton-school-logo" class="navbar-logo-image">
+        </section>
+        <ul class="navbar-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <section class="navbar-menu">
+            <button class="navbar-menu-icon">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </section>
+    </nav>
+<script>
+const menuIcon = document.querySelector(".navbar-menu-icon");
+const menuLinks = document.querySelector(".navbar-links");
+
+menuIcon.addEventListener("click", () => {
+    menuLinks.classList.toggle("active");
+});
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 750) {
+     menuLinks.classList.remove("active");
+    }
+});
+</script>
+<style>
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.navbar-logo-image {
+    height: 75px;
+    width: 150px;
+}
+
+.navbar-links {
+    margin-left: auto;
+    display: flex;
+    list-style: none;
+}
+
+.navbar-links li {
+    margin-right: 15px;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: rgb(51, 51, 51);
+}
+
+.navbar-menu-icon {
+    display: none;
+    border: none;
+    background-color: transparent;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 750px) {
+    .navbar-links {
+        display: none;
+        justify-content: space-around;
+        position: absolute;
+        top: 86%;
+        left: 0;
+        width: 95%;
+        background-color: rgb(249, 249, 249);
+        border: 1px solid #ccc;
+        padding: 15px;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    .navbar-links li {
+        margin-bottom: 15px;
+    }
+
+    .navbar-menu-icon {
+        display: block;
+    }
+}
+</style>
