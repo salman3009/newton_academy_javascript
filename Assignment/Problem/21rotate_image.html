@@ -1,0 +1,92 @@
+<div id="plus">
+    <img id="i1" class="image" alt="Image 1">
+    <img id="i2" class="image" alt="Image 2">
+    <img id="i3" class="image" alt="Image 3">
+    <img id="i4" class="image" alt="Image 4">
+</div>
+<button onclick="rotateImages()">Rotate</button>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+
+    #plus {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+    }
+
+    .image {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        min-width: 100px;
+        min-height: 100px;
+        border-style: solid;
+        border-width: 1px;
+    }
+
+    #i1 {
+        top: 100px;
+        left: 0px;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+    }
+
+    #i2 {
+        top: 0;
+        left: 100px;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+    }
+
+    #i3 {
+        top: 100px;
+        left: 200px;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+    }
+
+
+    #i4 {
+        top: 200px;
+        left: 100px;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+    }
+
+    button {
+        margin-top: 50px;
+        align-self: center;
+
+    }
+</style>
+<script>
+    let image1 = document.getElementById("i1");
+    let image2 = document.getElementById("i2");
+    let image3 = document.getElementById("i3");
+    let image4 = document.getElementById("i4");
+    let path = [
+        "https://d3dyfaf3iutrxo.cloudfront.net/general/upload/020e4610fbee4e8abe525bd6482fb865.jpg",
+        "https://d3dyfaf3iutrxo.cloudfront.net/general/upload/b59a7c2973b44b2cb3a6d78634146d41.jpg",
+        "https://d3dyfaf3iutrxo.cloudfront.net/general/upload/60171f69a20443b3ab5972df422661bc.jpg",
+        "https://d3dyfaf3iutrxo.cloudfront.net/general/upload/6160f7789c5048aaaefaff0210895201.jpg",
+    ];
+    let count = 0;
+    function rotateImages() {
+        count = (count + 1) % 4;
+        image1.src = path[(count + 0) % 4];
+        image2.src = path[(count + 1) % 4];
+        image3.src = path[(count + 2) % 4];
+        image4.src = path[(count + 3) % 4];
+    }
+    rotateImages()
+</script>
