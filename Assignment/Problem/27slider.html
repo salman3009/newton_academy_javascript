@@ -1,0 +1,42 @@
+https://my.newtonschool.co/playground/markup/275kyneqpv79
+<body>
+    <div class="font-resizer">
+        <label for="sizeSlider">Adjust font size:</label>
+        <input type="range" id="sizeSlider" min="10" max="72" value="16">
+        <span id="currentSize">Current Size: 16px</span>
+    </div>
+    <div id="textContent">
+        <p>Adjust the slider to see this text change in size!</p>
+    </div>
+</body>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+
+.font-resizer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#textContent p {
+    font-size: 16px;
+}
+
+</style>
+<script>
+    const sizeSlider = document.getElementById('sizeSlider');
+const textContent = document.getElementById('textContent').querySelector('p');
+const currentSize = document.getElementById('currentSize');
+
+sizeSlider.addEventListener('input', function() {
+    const newSize = this.value;
+    textContent.style.fontSize = `${newSize}px`;
+    currentSize.textContent = `Current Size: ${newSize}px`;
+});
+
+</script>

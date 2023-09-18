@@ -1,0 +1,70 @@
+https://my.newtonschool.co/playground/markup/9phv5nkg4u3c
+<body>
+    <div class="date-difference-calculator">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" value="">
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" value="">
+        <button id="calculate">Calculate Difference</button>
+        <div id="result">Difference: <span id="days">0</span> days, <span id="hours">0</span> hours, <span id="minutes">0</span> minutes, <span id="seconds">0</span> seconds</div>
+        <p id="errorMsg" style="color:red;"></p>
+    </div>
+</body>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+
+.date-difference-calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+button {
+    margin-top: 20px;
+}
+
+</style>
+<script>
+    const startDate = document.getElementById('startDate');
+const endDate = document.getElementById('endDate');
+const calculateBtn = document.getElementById('calculate');
+const daysElem = document.getElementById('days');
+const hoursElem = document.getElementById('hours');
+const minutesElem = document.getElementById('minutes');
+const secondsElem = document.getElementById('seconds');
+const errorMsg = document.getElementById('errorMsg');
+
+// Set initial dates to today
+const today = new Date().toISOString().split('T')[0];
+startDate.value = today;
+endDate.value = today;
+
+calculateBtn.addEventListener('click', function() {
+    const start = new Date(startDate.value);
+    const end = new Date(endDate.value);
+
+    if (start > end) {
+        errorMsg.textContent = "End Date must be after Start Date!";
+        return;
+    } else {
+        errorMsg.textContent = "";
+    }
+
+    const diffTime = Math.abs(end - start);
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    const diffHours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const diffMinutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
+    const diffSeconds = Math.floor((diffTime % (1000 * 60)) / 1000);
+
+    daysElem.textContent = diffDays;
+    hoursElem.textContent = diffHours;
+    minutesElem.textContent = diffMinutes;
+    secondsElem.textContent = diffSeconds;
+});
+
+</script>
