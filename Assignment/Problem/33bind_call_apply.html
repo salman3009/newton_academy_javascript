@@ -1,0 +1,82 @@
+https://my.newtonschool.co/playground/markup/gt78undtjwav
+
+<body>
+    <div class="editor">
+        <input type="text" id="name" placeholder="Enter your name...">
+        <input type="number" id="age" placeholder="Enter your age...">
+        <input type="text" id="country" placeholder="Enter your country...">
+        <button id="showProfile">Show Profile</button>
+        <button id="bindProfile">Bind Profile</button>
+    </div>
+
+    <div id="profileCard" style="display:none;">
+        <h2 id="profileName"></h2>
+        <p id="profileAge"></p>
+        <p id="profileCountry"></p>
+    </div>
+</body>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.editor {
+    margin-bottom: 50px;
+}
+
+#profileCard {
+    border: 1px solid black;
+    padding: 20px;
+    width: 200px;
+    margin: 0 auto;
+}
+
+</style>
+
+<script>
+    function init() {
+    const nameInput = document.getElementById('name');
+    const ageInput = document.getElementById('age');
+    const countryInput = document.getElementById('country');
+    const showProfileBtn = document.getElementById('showProfile');
+    const bindProfileBtn = document.getElementById('bindProfile');
+
+    const profileCard = {
+        element: document.getElementById('profileCard'),
+        nameElem: document.getElementById('profileName'),
+        ageElem: document.getElementById('profileAge'),
+        countryElem: document.getElementById('profileCountry'),
+        updateProfile: function(name, age, country) {
+            this.element.style.display = 'block';
+            this.nameElem.textContent = name;
+            this.ageElem.textContent = `Age: ${age}`;
+            this.countryElem.textContent = `Country: ${country}`;
+        }
+    };
+
+    showProfileBtn.addEventListener('click', function() {
+        profileCard.updateProfile.call(
+            profileCard, 
+            nameInput.value, 
+            ageInput.value, 
+            countryInput.value
+        );
+    });
+
+    bindProfileBtn.addEventListener('click', function() {
+        const boundUpdateProfile = profileCard.updateProfile.bind(
+            profileCard, 
+            nameInput.value, 
+            ageInput.value, 
+            countryInput.value
+        );
+        boundUpdateProfile();
+    });
+}
+
+init();
+
+</script>
