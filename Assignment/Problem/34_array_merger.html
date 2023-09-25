@@ -1,0 +1,78 @@
+https://my.newtonschool.co/playground/markup/tvhh8npow2gc
+<style>
+    .d-none {
+        display: none;
+    }
+</style>
+<h3>Merge arrays using spread operator</h3>
+<p>Give input numbers in text field separated by comas</p>
+<div>
+    <label for="1">Array 1</label>
+    <input type="text" id="1">
+    <button id="add-1">Add to array 1</button>
+    <p id="disp-1"></p>
+</div>
+<div>
+    <label for="2">Array 2</label>
+    <input type="text" id="2">
+    <button id="add-2">Add to array 2</button>
+    <p id="disp-2"></p>
+</div>
+<button id="merge">Merge both</button>
+<p id="result"></p>
+<p class="d-none" id="error">Wrong Input!</p>
+
+<script>
+    const arr1 = document.getElementById('1');
+const arr2 = document.getElementById('2');
+const btn1 = document.getElementById('add-1');
+const btn2 = document.getElementById('add-2');
+
+const firstArray = [];
+const secondArray = [];
+
+btn1.addEventListener('click', () => {
+    let str = arr1.value;
+    let arr = str.split(',');
+    let check = false;
+    arr.map(l => {
+        if (isNaN(l)) {
+            check = true;
+        } else {
+            firstArray.push(Number(l));
+        }
+
+    })
+    if (check) {
+        document.getElementById('error').classList.remove('d-none');
+    } else {
+        document.getElementById('error').classList.add('d-none');
+        document.getElementById('disp-1').innerHTML = JSON.stringify(firstArray);
+    }
+
+})
+
+btn2.addEventListener('click', () => {
+    let str = arr2.value;
+    let arr = str.split(',');
+    let check = false;
+    arr.map(l => {
+        if (isNaN(l)) {
+            check = true;
+        } else {
+            secondArray.push(Number(l));
+        }
+    })
+    if (check) {
+        document.getElementById('error').classList.remove('d-none');
+    } else {
+        document.getElementById('error').classList.add('d-none');
+        document.getElementById('disp-2').innerHTML = JSON.stringify(secondArray);
+    }
+})
+
+document.getElementById('merge').addEventListener('click', () => {
+    let mergedArray = [...firstArray, ...secondArray];
+    document.getElementById('result').innerHTML = JSON.stringify(mergedArray);
+})
+</script>

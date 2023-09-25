@@ -1,0 +1,15 @@
+https://my.newtonschool.co/playground/code/oqxzptyp7497
+
+<script>
+    function findShortestWordLength(str) {
+  const words = str.split(" ");
+  let shortestLength = Infinity;
+  for (let i = 0; i < words.length; i++) {
+    const currentWordLength = words[i].length;
+    if (currentWordLength < shortestLength) {
+      shortestLength = currentWordLength;
+    }
+  }
+  return shortestLength;
+}
+</script>

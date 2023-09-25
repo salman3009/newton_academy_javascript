@@ -1,0 +1,85 @@
+https://my.newtonschool.co/playground/markup/co3kx3mge00f
+
+Event capturing means propagation of event is done from ancestor elements to child element in the DOM while event bubbling means propagation is done from child element to ancestor elements in the DOM.
+The event capturing occurs followed by event bubbling.
+If {capture: true} ,event capturing will occur else event bubbling will occur.
+Both can be prevented by using the stopPropagation() method.
+
+<div id="outer">
+    <div id="inner">
+      <button id="btn">Click me!</button>
+    </div>
+</div>
+
+<style>
+    #outer {
+   padding: 30px;
+    background-color: black;
+    width: fit-content;
+}
+
+#inner {
+    padding: 20px;
+    background-color: grey;
+    width: fit-content;
+}
+
+button {
+    font-size: 20px;
+}
+</style>
+
+<script>
+    const outerDiv = document.querySelector("#outer");
+const innerDiv = document.querySelector("#inner");
+const button = document.querySelector("#btn");
+
+outerDiv.addEventListener(
+  "click",
+  function () {
+    console.log("outer capturing");
+  },
+  true
+);
+
+innerDiv.addEventListener(
+  "click",
+  function () {
+    console.log("inner capturing");
+  },
+  true
+);
+
+button.addEventListener(
+  "click",
+  function () {
+    console.log("button capturing");
+  },
+  true
+);
+
+button.addEventListener(
+  "click",
+  function () {
+    console.log("button bubbling");
+  },
+  false
+);
+
+innerDiv.addEventListener(
+  "click",
+  function () {
+    console.log("inner bubbling");
+  },
+  false
+);
+
+outerDiv.addEventListener(
+  "click",
+  function () {
+    console.log("outer bubbling");
+  },
+  false
+);
+
+</script>
