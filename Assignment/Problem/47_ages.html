@@ -1,0 +1,28 @@
+https://my.newtonschool.co/playground/markup/ujviga2ueajk
+<body>
+    <input type="text" id="inputArea" placeholder="Enter ages separated by commas">
+    <button onclick="showLargestAges()">Show Largest Ages</button>
+    <div id="output"></div>
+
+</body>
+<style>
+            #inputArea {
+            width: 300px;
+            height: 30px;
+        }
+        #output {
+            width: 300px;
+            height: 30px;
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+</style>
+<script>
+        function showLargestAges() {
+            var inputArea = document.getElementById('inputArea').value;
+            var ages = inputArea.split(',').map(Number);
+            ages.sort((a, b) => b - a);
+            var output = ages.slice(0, 3).join(', ');
+            document.getElementById('output').innerText = output;
+        }
+</script>

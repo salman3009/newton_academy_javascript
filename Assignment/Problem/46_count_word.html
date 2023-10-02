@@ -1,0 +1,19 @@
+https://my.newtonschool.co/playground/code/5adeclryoady
+<script>
+    function countWordOccurrences(sentence, word) {
+    // Split the sentence into an array of words
+    const words = sentence.split(" ");
+    
+    // Initialize a counter for the word occurrences
+    let count = 0;
+    
+    words.forEach(element => {
+
+      if(element.toLowerCase() === word.toLowerCase()){
+        count++;
+      }
+    });
+   
+    return count;
+  }
+</script>

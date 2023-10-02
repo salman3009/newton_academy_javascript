@@ -1,0 +1,62 @@
+
+
+
+<html>
+
+https://my.newtonschool.co/playground/markup/al3zp6574asz
+<body>
+  <div class="container">
+    <h1>Text Size Changer</h1>
+    
+    <p id="text">This is some sample text.</p>
+
+    <button id="increaseBtn">+</button>
+    <button id="decreaseBtn">-</button>
+
+  </div>
+</body>
+</html>
+
+<style>
+    .container {
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+#text {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 10px;
+}
+
+</style>
+<script>
+    var increaseBtn = document.getElementById('increaseBtn');
+var decreaseBtn = document.getElementById('decreaseBtn');
+var textElement = document.getElementById('text');
+var textSize = 18;
+
+increaseBtn.addEventListener('click', function() {
+  textSize += 2;
+  textElement.style.fontSize = textSize + 'px';
+});
+
+decreaseBtn.addEventListener('click', function() {
+  if (textSize > 10) {
+    textSize -= 2;
+    textElement.style.fontSize = textSize + 'px';
+  }
+});
+
+</script>

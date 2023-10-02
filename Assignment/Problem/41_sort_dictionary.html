@@ -1,0 +1,79 @@
+https://my.newtonschool.co/playground/markup/plc47b3ofb7n
+
+<body>
+    <div class="user-directory">
+        <button id="sortByName">Sort by Name</button>
+        <button id="sortByAge">Sort by Age</button>
+        <ul id="userList">
+
+        </ul>
+    </div>
+
+</body>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+}
+
+.user-directory {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+button {
+    padding: 5px 15px;
+    margin: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    border: 1px solid #ddd;
+    margin: 8px 0;
+    padding: 5px 10px;
+}
+
+</style>
+
+<script>
+    // Sample data
+const users = [
+    { name: "Alice", age: 30, role: "Developer" },
+    { name: "Bob", age: 25, role: "Designer" },
+    { name: "Charlie", age: 32, role: "Manager" },
+    { name: "David", age: 28, role: "Analyst" },
+    { name: "Eva", age: 22, role: "Intern" }
+];
+
+// Function to render users to the DOM
+function renderUsers(userList) {
+    const userElement = document.getElementById('userList');
+    userElement.innerHTML = ""; // Clearing existing entries
+
+    userList.forEach(user => {
+        const li = document.createElement('li');
+        li.textContent = `${user.name}, ${user.age}, ${user.role}`;
+        userElement.appendChild(li);
+    });
+}
+
+// Sorting by name
+document.getElementById('sortByName').addEventListener('click', () => {
+    const sortedUsers = [...users].sort((a, b) => a.name.localeCompare(b.name));
+    renderUsers(sortedUsers);
+});
+
+// Sorting by age
+document.getElementById('sortByAge').addEventListener('click', () => {
+    const sortedUsers = [...users].sort((a, b) => a.age - b.age);
+    renderUsers(sortedUsers);
+});
+
+// Initial rendering of users
+renderUsers(users);
+
+</script>

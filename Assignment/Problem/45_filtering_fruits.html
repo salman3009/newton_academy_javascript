@@ -1,0 +1,71 @@
+https://my.newtonschool.co/playground/markup/lby7yay3t2qk
+<body>
+    <div class="container">
+        <h2>Filter Fruits By Type</h2>
+        <select id="fruitType">
+            <option value="all">All</option>
+            <option value="citrus">Citrus</option>
+            <option value="berry">Berry</option>
+            <option value="stone">Stone Fruit</option>
+        </select>
+        <button id="filterBtn">Filter</button>
+        <ul id="fruitList">
+            <!-- Fruits will be displayed here -->
+        </ul>
+    </div>
+</body>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 50px;
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
+}
+
+#fruitType, #filterBtn {
+    margin-top: 20px;
+}
+
+#fruitList {
+    list-style-type: none;
+    margin-top: 30px;
+    padding-left: 0;
+}
+
+</style>
+<script>
+    const fruits = [
+    { name: "Lemon", type: "citrus" },
+    { name: "Orange", type: "citrus" },
+    { name: "Strawberry", type: "berry" },
+    { name: "Blueberry", type: "berry" },
+    { name: "Peach", type: "stone" },
+    { name: "Cherry", type: "stone" },
+];
+
+const fruitType = document.getElementById('fruitType');
+const filterBtn = document.getElementById('filterBtn');
+const fruitList = document.getElementById('fruitList');
+
+filterBtn.addEventListener('click', function() {
+    const selectedType = fruitType.value;
+    
+    let filteredFruits;
+    if (selectedType === "all") {
+        filteredFruits = fruits;
+    } else {
+        filteredFruits = fruits.filter(fruit => fruit.type === selectedType);
+    }
+
+    fruitList.innerHTML = "";
+    filteredFruits.forEach(fruit => {
+        const li = document.createElement('li');
+        li.textContent = fruit.name;
+        fruitList.appendChild(li);
+    });
+});
+
+</script>
