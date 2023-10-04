@@ -1,12 +1,10 @@
 https://my.newtonschool.co/playground/code/b1wpythdjnki
 <script>
     function selectPlayers(array) {
+        let result = array.filter(function (obj) {
+            return obj >= 6;
+        });
+        return result.sort((a, b) => b - a);
 
-let sortedArray = array.sort((a, b) => a > b ? -1 : 1)
-while (sortedArray[sortedArray.length - 1] < 6) {
-    sortedArray.pop()
-}
-
-return sortedArray
-}
+    }
 </script>

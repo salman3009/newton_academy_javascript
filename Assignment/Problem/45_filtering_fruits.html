@@ -14,6 +14,37 @@ https://my.newtonschool.co/playground/markup/lby7yay3t2qk
         </ul>
     </div>
 </body>
+
+
+<script>
+    const fruits = [
+    { name: "Lemon", type: "citrus" },
+    { name: "Orange", type: "citrus" },
+    { name: "Strawberry", type: "berry" },
+    { name: "Blueberry", type: "berry" },
+    { name: "Peach", type: "stone" },
+    { name: "Cherry", type: "stone" },
+];
+
+document.getElementById("filterBtn").addEventListener('click',function(){
+    let input = document.getElementById("fruitType").value;
+    let result = fruits.filter(function(obj){
+        return input != "all"?obj.type == input:true;
+    });
+    bindingList(result);
+   
+});
+function bindingList(result){
+    let list = document.getElementById("fruitList");
+    list.innerHTML = "";
+     for(let obj of result){
+        list.innerHTML +=`<li>${obj.name}</li>`
+     }
+}
+bindingList(fruits);
+</script>
+
+
 <style>
     body {
     font-family: Arial, sans-serif;
@@ -36,36 +67,3 @@ https://my.newtonschool.co/playground/markup/lby7yay3t2qk
 }
 
 </style>
-<script>
-    const fruits = [
-    { name: "Lemon", type: "citrus" },
-    { name: "Orange", type: "citrus" },
-    { name: "Strawberry", type: "berry" },
-    { name: "Blueberry", type: "berry" },
-    { name: "Peach", type: "stone" },
-    { name: "Cherry", type: "stone" },
-];
-
-const fruitType = document.getElementById('fruitType');
-const filterBtn = document.getElementById('filterBtn');
-const fruitList = document.getElementById('fruitList');
-
-filterBtn.addEventListener('click', function() {
-    const selectedType = fruitType.value;
-    
-    let filteredFruits;
-    if (selectedType === "all") {
-        filteredFruits = fruits;
-    } else {
-        filteredFruits = fruits.filter(fruit => fruit.type === selectedType);
-    }
-
-    fruitList.innerHTML = "";
-    filteredFruits.forEach(fruit => {
-        const li = document.createElement('li');
-        li.textContent = fruit.name;
-        fruitList.appendChild(li);
-    });
-});
-
-</script>

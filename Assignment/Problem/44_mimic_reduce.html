@@ -1,12 +1,17 @@
 https://my.newtonschool.co/playground/code/9c2j6vdos473
 <script>
-    function myReduce(array, callback, initialValue) {
+function myReduce(array, callback, initialValue) {
   let accumulator = initialValue;
 
   for (let i = 0; i < array.length; i++) {
-    accumulator = callback(accumulator, array[i], i, array);
+    accumulator = callback(accumulator,array[i]);
   }
 
   return accumulator;
 }
+
+const numbers = [1,2,3,4,5];
+const sum = myReduce(numbers, function (accumulator, currentValue) {
+return accumulator + currentValue;
+}, 0);
 </script>
