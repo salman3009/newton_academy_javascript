@@ -10,6 +10,46 @@ https://my.newtonschool.co/playground/markup/plc47b3ofb7n
     </div>
 
 </body>
+<script>
+    
+// Sample data
+const users = [
+    { name: "Alice", age: 30, role: "Developer" },
+    { name: "Bob", age: 25, role: "Designer" },
+    { name: "Charlie", age: 32, role: "Manager" },
+    { name: "David", age: 28, role: "Analyst" },
+    { name: "Eva", age: 22, role: "Intern" }
+];
+
+// Function to render users to the DOM
+function renderUsers(userList) {
+    const userElement = document.getElementById('userList');
+    userElement.innerHTML = ""; // Clearing existing entries
+
+    userList.forEach(user => {
+        const li = document.createElement('li');
+        li.textContent = `${user.name}, ${user.age}, ${user.role}`;
+        userElement.appendChild(li);
+    });
+}
+
+// Sorting by name
+document.getElementById('sortByName').addEventListener('click', () => {
+    const sortedUsers = users.sort((a, b) => a.name.localeCompare(b.name));
+    renderUsers(sortedUsers);
+});
+
+// Sorting by age
+document.getElementById('sortByAge').addEventListener('click', () => {
+    const sortedUsers = users.sort((a, b) => a.age - b.age);
+    renderUsers(sortedUsers);
+});
+
+// Initial rendering of users
+renderUsers(users);
+
+</script>
+
 <style>
     body {
     font-family: Arial, sans-serif;
@@ -36,44 +76,31 @@ li {
     margin: 8px 0;
     padding: 5px 10px;
 }
-
 </style>
 
 <script>
-    // Sample data
-const users = [
-    { name: "Alice", age: 30, role: "Developer" },
-    { name: "Bob", age: 25, role: "Designer" },
-    { name: "Charlie", age: 32, role: "Manager" },
-    { name: "David", age: 28, role: "Analyst" },
-    { name: "Eva", age: 22, role: "Intern" }
-];
+//localeCompare
 
-// Function to render users to the DOM
-function renderUsers(userList) {
-    const userElement = document.getElementById('userList');
-    userElement.innerHTML = ""; // Clearing existing entries
+let a = 'n'.localeCompare('z');
+console.log(a)
+ 
+// Alphabetically the word "gfg" comes after
+// "geeksforgeeks" which gives a positive value
+let b = 'gfg'.localeCompare('geeksforgeeks');
+console.log(b)
+ 
+// "gfg" and "gfg" are equivalent which
+// gives a value of zero(0)
+c = 'a'.localeCompare('a');
+console.log(c)
 
-    userList.forEach(user => {
-        const li = document.createElement('li');
-        li.textContent = `${user.name}, ${user.age}, ${user.role}`;
-        userElement.appendChild(li);
-    });
-}
+// When sort() compares two values, it sends the values to the compare function, and sorts the values according to the returned (negative, zero, positive) value.
 
-// Sorting by name
-document.getElementById('sortByName').addEventListener('click', () => {
-    const sortedUsers = [...users].sort((a, b) => a.name.localeCompare(b.name));
-    renderUsers(sortedUsers);
-});
+// Example:
 
-// Sorting by age
-document.getElementById('sortByAge').addEventListener('click', () => {
-    const sortedUsers = [...users].sort((a, b) => a.age - b.age);
-    renderUsers(sortedUsers);
-});
+// The sort function will sort 40 as a value lower than 100.
 
-// Initial rendering of users
-renderUsers(users);
+// When comparing 40 and 100, sort() calls the function(40,100).
 
+// The function calculates 40-100, and returns -60 (a negative value).
 </script>

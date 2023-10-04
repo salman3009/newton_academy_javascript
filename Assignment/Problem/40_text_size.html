@@ -1,9 +1,9 @@
 
 
+https://my.newtonschool.co/playground/markup/al3zp6574asz
 
 <html>
 
-https://my.newtonschool.co/playground/markup/al3zp6574asz
 <body>
   <div class="container">
     <h1>Text Size Changer</h1>
@@ -16,6 +16,19 @@ https://my.newtonschool.co/playground/markup/al3zp6574asz
   </div>
 </body>
 </html>
+
+<script>
+    let fontSize = 18;
+    document.getElementById("increaseBtn").addEventListener('click',function(){
+        fontSize+=2;
+     document.getElementById("text").style.fontSize = fontSize+'px';
+    })
+
+    document.getElementById("decreaseBtn").addEventListener('click',function(){
+        fontSize-=2;
+     document.getElementById("text").style.fontSize = fontSize+'px';
+    })
+</script>
 
 <style>
     .container {
@@ -41,22 +54,3 @@ button {
 }
 
 </style>
-<script>
-    var increaseBtn = document.getElementById('increaseBtn');
-var decreaseBtn = document.getElementById('decreaseBtn');
-var textElement = document.getElementById('text');
-var textSize = 18;
-
-increaseBtn.addEventListener('click', function() {
-  textSize += 2;
-  textElement.style.fontSize = textSize + 'px';
-});
-
-decreaseBtn.addEventListener('click', function() {
-  if (textSize > 10) {
-    textSize -= 2;
-    textElement.style.fontSize = textSize + 'px';
-  }
-});
-
-</script>
