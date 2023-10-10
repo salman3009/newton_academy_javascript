@@ -1,0 +1,64 @@
+https://my.newtonschool.co/playground/code/4jbo7hjpdqy2
+
+<script>
+    const Factory = function () {
+    this.createEmployee = function (firstName, lastName, type) {
+        var employee;
+
+        if (type === "fulltime") {
+            employee = new FullTime(firstName, lastName, "fulltime");
+        } else if (type === "parttime") {
+            employee = new PartTime(firstName, lastName, "parttime");
+        } else if (type === "intern") {
+            employee = new Intern(firstName, lastName, "intern");
+        }
+        return employee;
+    };
+};
+
+function FullTime(firstName, lastName, type) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.type = type;
+    let salary = 0;
+    this.level=3
+    this.getSalary = function () {
+        return salary;
+    };
+
+    this.setSalary = function (amount) {
+        salary = amount;
+    };
+}
+
+function PartTime(firstName, lastName, type) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.type = type;
+    let salary = 0;
+    this.level=2
+    this.getSalary = function () {
+        return salary;
+    };
+
+    this.setSalary = function (amount) {
+        salary = amount;
+    };
+}
+
+function Intern(firstName, lastName, type) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.type = type;
+    let salary = 0;
+    this.level=1;
+
+    this.getSalary = function () {
+        return salary;
+    };
+
+    this.setSalary = function (amount) {
+        salary = amount;
+    };
+}
+</script>
