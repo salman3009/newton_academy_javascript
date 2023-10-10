@@ -1,0 +1,15 @@
+<script>
+    function Graph() {
+  this.vertices = [];
+  this.edges = [];
+}
+
+Graph.prototype.addVertex = function (v) {
+  this.vertices.push(v);
+};
+
+const g = new Graph();
+for(let obj in g){
+    console.log(obj);
+}
+</script>

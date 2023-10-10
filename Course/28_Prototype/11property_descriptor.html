@@ -1,0 +1,31 @@
+value: It is the value associated with the property that is called
+writable: It indicates if the property can be changed or not. It only returns true if the property can be manipulated
+enumerable: If the property is visible during enumeration of the properties of the corresponding object, then it returns true.
+configurable: It indicates if the property descriptor can be changed or removed from the corresponding object.
+
+<script>
+       // Object 
+       const Obj = { 
+        property1: "GeeksforGeeks", 
+        property2: 12 
+    }; 
+  
+    const descriptor1 = Object 
+        .getOwnPropertyDescriptor(Obj, 'property1'); 
+  
+    const descriptor2 = Object 
+        .getOwnPropertyDescriptor(Obj, 'property2'); 
+  
+    console.log(descriptor1.configurable); 
+    // expected output: true 
+  
+    console.log(descriptor1.enumerable); 
+    // expected output: true 
+  
+    console.log(descriptor1.value); 
+    // expected output: GeeksforGeeks 
+  
+    console.log(descriptor2.value); 
+    // expected output: 12 
+  
+</script>
