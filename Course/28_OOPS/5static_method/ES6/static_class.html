@@ -1,0 +1,16 @@
+<script>
+    class Person {
+   constructor(firstName, lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+   }
+
+   static isPerson(obj) {
+      return obj.constructor === Person;
+   }
+
+   sayHi() {
+      return `Hi ${this.firstName}`;
+   }
+}
+</script>

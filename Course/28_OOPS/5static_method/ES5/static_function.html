@@ -1,0 +1,14 @@
+<script>
+    function Person(firstName, lastName) {
+   this.firstName = firstName;
+   this.lastName = lastName;
+}
+
+Person.isPerson = function(obj) {
+   return obj.constructor === Person;
+}
+
+Person.prototype.sayHi = function() {
+   return "Hi " + this.firstName;
+}
+</script>
