@@ -1,0 +1,34 @@
+https://my.newtonschool.co/playground/markup/bqq4b7p8ii6a
+<div class="quiz-container">
+    <h2>Math Operator Quiz</h2>
+    <p id="question">Question 1: 7 + 3 * 2 - 4</p>
+    <input type="number" id="answerInput1" placeholder="Answer for Q1">
+    
+    <p id="question2">Question 2: (6 / 2) * (8 - 3)</p>
+    <input type="number" id="answerInput2" placeholder="Answer for Q2">
+    
+    <p id="question3">Question 3: 5 % 3 + 4</p>
+    <input type="number" id="answerInput3" placeholder="Answer for Q3">
+
+    <button id="submitAnswers">Submit Answers</button>
+    <p id="feedback"></p>
+</div>
+<script>
+    document.querySelector("#submitAnswers").addEventListener("click",calculate);
+
+    function calculate(){
+          let one = (7 + 3 * 2 - 4);
+          let two = (6 / 2) * (8 - 3);
+          let three = (5 % 3 + 4);
+    let userAnswerOne = document.querySelector('#answerInput1').value;
+    let userAnswerTwo = document.querySelector('#answerInput2').value;
+    let userAnswerThree = document.querySelector('#answerInput3').value;
+    if(userAnswerOne == one && userAnswerTwo == two && userAnswerThree == three ){
+      document.querySelector("#feedback").innerHTML = "All answers are correct!";
+      document.querySelector("#feedback").style.color = "green";
+    }else{
+        document.querySelector("#feedback").innerHTML = "Some answers are incorrect. Try again!";
+        document.querySelector("#feedback").style.color = "red";
+    }
+    }
+</script>
