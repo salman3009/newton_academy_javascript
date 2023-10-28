@@ -1,0 +1,16 @@
+<script>
+    const getValue = (num) => {
+  let numberX = num;
+  num = 0;
+  while (numberX > 0) {
+    num = num + (numberX % 10 | 0);
+    numberX = numberX / 10;
+  }
+  if (num < 10) {
+    return num;
+  } else {
+    return getValue(num);
+  }
+};
+
+</script>
