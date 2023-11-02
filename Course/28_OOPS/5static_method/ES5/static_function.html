@@ -4,11 +4,16 @@
    this.lastName = lastName;
 }
 
-Person.isPerson = function(obj) {
-   return obj.constructor === Person;
+Person.isPerson = function(){
+   return true;
 }
 
-Person.prototype.sayHi = function() {
-   return "Hi " + this.firstName;
+Person.prototype.getDisplay=function(){
+   return this.firstName;
 }
+
+let akashPerson = new Person("akash","ajay");
+console.log(akashPerson.getDisplay());
+
+console.log(Person.isPerson());
 </script>

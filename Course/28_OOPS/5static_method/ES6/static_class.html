@@ -6,11 +6,16 @@
    }
 
    static isPerson(obj) {
-      return obj.constructor === Person;
+      return true;
    }
 
-   sayHi() {
+   getDisplay() {
       return `Hi ${this.firstName}`;
    }
 }
+
+let akashPerson = new Person("akash","ajay");
+console.log(akashPerson.getDisplay());
+
+console.log(Person.isPerson());
 </script>
