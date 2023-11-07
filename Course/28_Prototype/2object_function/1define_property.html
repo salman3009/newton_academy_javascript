@@ -1,0 +1,52 @@
+The Object.defineProperty() method in JavaScript is a Standard built-in object which defines a new property directly on
+an object or it can also modify the existing property of an object and returns the object.
+
+<script>
+    // Creating a student object
+    const student = {
+        registration: '12342',
+        name: 'Sandeep',
+        age: 27,
+    };
+
+    // This sets the enumerable attribute
+    // of marks property to false
+
+    Object.defineProperty(student, 'marks', {
+        value: 98,
+        configurable: true,
+        writable: false,
+        enumerable: false,
+    });
+
+    //writable false will not change value
+    student.marks = 55;
+    console.log(student.marks);
+
+    //enumerable: false this propery will not show
+    console.log(student.propertyIsEnumerable('marks'));
+    for (const key in student) {
+        console.log(key)
+    }
+
+    let count = 0;
+    Object.defineProperty(student, "temp", {
+        get() {
+            return count;
+        },
+        set(input) {
+            count = input;
+        }
+    });
+    student.temp = 6;
+    console.log(student.temp);
+
+
+    //configurable false we cannot delete it
+    Object.defineProperty(student, 'scale', {
+        value: 98,
+        configurable: false
+    });
+    delete student.scale 
+    console.log(student);
+</script>

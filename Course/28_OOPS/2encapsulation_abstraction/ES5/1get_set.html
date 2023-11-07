@@ -1,0 +1,19 @@
+<script>
+function StopWatch(duration)
+{
+    this.temp = duration; 
+    Object.defineProperty(this, "duration", {
+        get: function()
+        {
+          
+            return this.temp;
+        },
+        set: function(input){
+            this.temp = input;
+        }
+    })
+}
+let obj = new StopWatch(10);
+obj.temp = 5;
+console.log(obj.duration);
+</script>
