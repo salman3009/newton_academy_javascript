@@ -232,6 +232,7 @@ https://my.newtonschool.co/playground/markup/2p7it8e60i7d
         }
     }
 
+    //solution 1
     let productscontainerClassName = document.querySelector(".productscontainer");
     let productscontainerResult = productslist.map((e) => {
         return `<div class="product">
@@ -247,6 +248,7 @@ https://my.newtonschool.co/playground/markup/2p7it8e60i7d
     productscontainerClassName.innerHTML = productscontainerResult;
 
 
+    //solution 2
     let carticonClassName = document.querySelector(".carticon");
     carticonClassName.addEventListener('click', () => {
         let cartuiClassName = document.querySelector(".cartui");
@@ -259,6 +261,7 @@ https://my.newtonschool.co/playground/markup/2p7it8e60i7d
         cartuiClassName.classList.remove("cartopened");
     });
 
+    //solution 3
     class Product {
         constructor(id, title, price, image) {
             this.id = id;
@@ -268,6 +271,7 @@ https://my.newtonschool.co/playground/markup/2p7it8e60i7d
         }
     }
 
+    //solution 4
     class Storage {
 
         static getproducts() {
@@ -297,6 +301,7 @@ https://my.newtonschool.co/playground/markup/2p7it8e60i7d
         }
     }
 
+    //solution 5
     class Ui {
     static displayproducts(e) {
         document.querySelector(".pccontainer").innerHTML += `
@@ -345,6 +350,8 @@ https://my.newtonschool.co/playground/markup/2p7it8e60i7d
     }
 
 }
+
+//solution 6
 let bag = document.querySelector(".carticon");
 window.bag = bag;
 document.addEventListener('DOMContentLoaded',()=>{

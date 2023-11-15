@@ -1,4 +1,4 @@
-https://my.newtonschool.co/playground/markup/l2p3u9bh3fkd
+https://my.newtonschool.co/playground/markup/2p7it8e60i7d
 <!DOCTYPE html>
 <html lang="en">
 
@@ -232,6 +232,7 @@ https://my.newtonschool.co/playground/markup/l2p3u9bh3fkd
         }
     }
 
+     //solution-1
     let productscontainerClassName = document.querySelector(".productscontainer");
     let productscontainerResult = productslist.map((e) => {
         return `<div class="product">
@@ -247,6 +248,7 @@ https://my.newtonschool.co/playground/markup/l2p3u9bh3fkd
     productscontainerClassName.innerHTML = productscontainerResult;
 
 
+     //solution-2
     let carticonClassName = document.querySelector(".carticon");
     carticonClassName.addEventListener('click', () => {
         let cartuiClassName = document.querySelector(".cartui");
@@ -259,6 +261,7 @@ https://my.newtonschool.co/playground/markup/l2p3u9bh3fkd
         cartuiClassName.classList.remove("cartopened");
     });
 
+     //solution-3
     class Product {
         constructor(id, title, price, image) {
             this.id = id;
@@ -268,6 +271,7 @@ https://my.newtonschool.co/playground/markup/l2p3u9bh3fkd
         }
     }
 
+     //solution-4
     class Storage {
 
         static getproducts() {
@@ -297,82 +301,57 @@ https://my.newtonschool.co/playground/markup/l2p3u9bh3fkd
         }
     }
 
+    //solution-5
     class Ui {
-    static displayproducts(e) {
-        document.querySelector(".pccontainer").innerHTML += `
-                  <div class="cartproduct">
-                  <div class="pnp">
-                      <div class="img">
-                          <img width="90px" src=" ${e.image} " alt="">
-                      </div>
-                      <div class="nameandprice">
-                          <p> ${e.title} </p>
-                          <p> ${e.price} </p>
-                      </div>
-                  </div>
 
-                  <button class="delete" productid=${e.id}>
-                      X
-                  </button>
-              </div>
-              `;
-    }
-    static displayproductsLS() {
-        let products = Storage.getproducts();
-        products.map((e) => {
-            document.querySelector(".pccontainer").innerHTML += `
-                  <div class="cartproduct">
-                  <div class="pnp">
-                      <div class="img">
-                          <img width="90px" src=" ${e.image} " alt="">
-                      </div>
-                      <div class="nameandprice">
-                          <p> ${e.title} </p>
-                          <p> ${e.price} </p>
-                      </div>
-                  </div>
+        static displayproducts(e) {
+            let pccontainerClassName = document.querySelector(".pccontainer");
+            pccontainerClassName.innerHTML += `<div class="cartproduct">
+  <div class="pnp">
+      <div class="img">
+          <img width="90px" src=" ${e.image} " alt="">
+      </div>
+      <div class="nameandprice">
+          <p> ${e.title} </p>
+          <p> ${e.price} </p>
+      </div>
+  </div>
 
-                  <button class="delete" productid=${e.id}>
-                      X
-                  </button>
-              </div>
-              `;
-        });
-    }
-
-    static removeproduct(e) {
-        e.parentElement.remove();
-    }
-
-}
-let bag = document.querySelector(".carticon");
-window.bag = bag;
-document.addEventListener('DOMContentLoaded',()=>{
-    Ui.displayproductsLS();
-    bag.setAttribute("items", Storage.getproducts().length);
-})
-
-
-document.querySelectorAll(".addtocart").forEach((e) => {
-    e.onclick = (evt) => {
-        let id = evt.target.getAttribute("productid");
-        let price = evt.target.previousElementSibling.innerHTML;
-        let image =
-            evt.target.parentElement.previousElementSibling.previousElementSibling.getAttribute(
-                "src"
-            );
-        let title = evt.target.parentElement.previousElementSibling.innerHTML;
-        let product = new Product(id, title, price, image);
-        let products = Storage.getproducts();
-        let ids = products.map((r) => r.id);
-        if (ids.includes(id)) return;
-        else {
-            Storage.addtolocalstorage(product);
-            Ui.displayproducts(product);
-            bag.setAttribute("items", Storage.getproducts().length);
+  <button class="delete" productid=${e.id}>
+      X
+  </button>
+</div>`;
         }
-    };
-});
+
+        static displayproductsLS() {
+            let existingItem = Storage.getproducts();
+            let pccontainerClassName = document.querySelector(".pccontainer");
+            existingItem.forEach((e) => {
+                pccontainerClassName += `<div class="cartproduct">
+    <div class="pnp">
+        <div class="img">
+            <img width="90px" src=" ${e.image} " alt="">
+        </div>
+        <div class="nameandprice">
+            <p> ${e.title} </p>
+            <p> ${e.price} </p>
+        </div>
+    </div>
+
+    <button class="delete" productid=${e.id}>
+        X
+    </button>
+</div>`;
+            })
+
+        }
+
+        static removeproduct(e) {
+            e.parentElement.remove();
+        }
+
+    }
+
 
 </script>
 
