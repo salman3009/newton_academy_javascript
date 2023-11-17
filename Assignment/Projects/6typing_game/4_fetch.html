@@ -1,0 +1,77 @@
+Timer:<div class="timer" id="timer">0</div>
+WPM:<div class="wpm" id="wpm">0</div>
+<div class="container" id="container"></div>
+
+<style>
+    .correct {
+        color: green;
+    }
+
+    .incorrect {
+        color: red;
+        text-decoration: underline;
+    }
+</style>
+
+<script>
+    const container = document.getElementById("container");
+    const timerElement = document.getElementById("timer");
+    const wpmElement = document.getElementById("wpm");
+
+    let timerID;
+    let isTimerStated = false;
+    let quote;
+    let currentIndex = 0;
+    let strokes;
+    let startTime;
+
+    window.addEventListener("click", (e) => {
+        if (document.getElementById("container").contains(e.target)) {
+
+            startTimer();
+
+        } else {
+            timerElement.innerText = 0;
+            stopTimer();
+        }
+    });
+
+    const renderNewQuote = async () => {
+        let response = await fetch("http://api.quotable.io/random");
+        response = await response.json();
+        quote = response.content;
+        if (isTimerStated) {
+            stopTimer();
+            startTimer();
+        }
+        currentIndex = 0;
+        strokes = new Array(quote.length);
+        strokes.fill(0);
+        container.innerHTML = "";
+        quote.split("").forEach((char) => {
+            const charSpan = document.createElement("span");
+            charSpan.innerText = char;
+            container.appendChild(charSpan);
+        });
+    };
+
+
+    function startTimer() {
+        isTimerStated = true;
+        timerElement.innerText = 0;
+        startTime = new Date();
+        timerID = setInterval(() => {
+            timerElement.innerText = getTimerTime();;
+        }, 1000);
+    }
+
+    function getTimerTime() {
+        return Math.floor((new Date() - startTime) / 1000);
+    }
+
+    function stopTimer() {
+        clearInterval(timerID);
+    }
+
+    renderNewQuote();
+</script>
