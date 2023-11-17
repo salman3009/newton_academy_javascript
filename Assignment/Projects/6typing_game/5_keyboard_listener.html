@@ -26,10 +26,8 @@ WPM:<div class="wpm" id="wpm">0</div>
   let startTime;
 
   window.addEventListener("click", (e) => {
-    if (document.getElementById("container").contains(e.target)) {
-     
-        startTimer();
-      
+    if (document.getElementById("container").contains(e.target)) {  
+        startTimer();  
     } else {
       timerElement.innerText = 0;
       stopTimer();
@@ -51,30 +49,21 @@ WPM:<div class="wpm" id="wpm">0</div>
           container.childNodes[currentIndex].classList.add("correct");
           container.childNodes[currentIndex].classList.remove(
             "incorrect"
-          );
-         
+          ); 
         } else {
           container.childNodes[currentIndex].classList.add("incorrect");
           container.childNodes[currentIndex].classList.remove(
             "correct"
           );
-         
-        }
-      
+        }  
         currentIndex++;
         if (currentIndex === quote.length) {
           currentIndex = 0;
           renderNewQuote();
         }
       }
-
     }
   });
-
-
-
-
-
 
   const renderNewQuote = async () => {
     let response = await fetch("http://api.quotable.io/random");
@@ -94,7 +83,6 @@ WPM:<div class="wpm" id="wpm">0</div>
       container.appendChild(charSpan);
     });
   };
-
  
   function startTimer() {
     isTimerStated = true;
@@ -110,6 +98,7 @@ WPM:<div class="wpm" id="wpm">0</div>
   }
 
   function stopTimer() {
+    isTimerStated = false;
     clearInterval(timerID);
   }
 

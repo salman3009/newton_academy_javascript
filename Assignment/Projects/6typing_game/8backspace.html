@@ -23,17 +23,19 @@ WPM:<div class="wpm" id="wpm">0</div>
   let quote;
   let currentIndex = 0;
   let strokes;
-  let startTime;
 
   window.addEventListener("click", (e) => {
     if (document.getElementById("container").contains(e.target)) {
-     
-        startTimer();
-      
+        startTimer(); 
     } else {
       timerElement.innerText = 0;
       stopTimer();
+      currentIndex = 0;
       resetStrokes();
+      container.childNodes.forEach((node) => {
+        node.classList.remove("correct");
+        node.classList.remove("incorrect");
+      });
     }
   });
 
@@ -48,7 +50,16 @@ WPM:<div class="wpm" id="wpm">0</div>
   window.addEventListener("keydown", (e) => {
     if (isTimerStated) {
       var charCode = parseInt(e.keyCode);
-       if ((charCode > 64 && charCode < 91) ||
+      if (charCode === 8) {
+        if (currentIndex === 0) return;
+        currentIndex--;
+        container.childNodes[currentIndex].classList.remove("correct");
+        container.childNodes[currentIndex].classList.remove(
+          "incorrect"
+        );
+        return;
+      }
+      else if ((charCode > 64 && charCode < 91) ||
         (charCode > 96 && charCode < 123) || charCode === 32 || charCode === 188 ||
         charCode === 186 ||
         charCode === 222 ||
@@ -80,15 +91,12 @@ WPM:<div class="wpm" id="wpm">0</div>
     }
   });
 
-
-
-
   function resetStrokes() {
     for (let i = 0; i < strokes.length; i++) {
       strokes[i] = 0;
     }
   }
-
+  
   function correctStrokes() {
     let count = 0;
     strokes.forEach((stroke) => {
@@ -116,7 +124,7 @@ WPM:<div class="wpm" id="wpm">0</div>
     });
   };
 
- 
+  let startTime;
   function startTimer() {
     isTimerStated = true;
     timerElement.innerText = 0;
