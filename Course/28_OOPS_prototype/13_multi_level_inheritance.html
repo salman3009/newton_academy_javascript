@@ -16,7 +16,7 @@ function Person(firstName,lastName,marks)
 
 function Employee(firstName,lastName, marks, rollno, salary) 
 {
-Person.call(this,firstName,lastName,marks, rollno, salary);
+Person.call(this,firstName,lastName,marks);
 this.rollno = rollno;
 this.salary=salary;
 }
@@ -31,7 +31,7 @@ Employee.prototype.getSalary = function()
 
 function Manager(firstName,lastName, marks, rollno, salary, code) {
 
- Employee.call(this, firstName,lastName,marks, rollno, salary, code);
+ Employee.call(this, firstName,lastName,marks, rollno, salary);
 
  this.code = code;
 }
