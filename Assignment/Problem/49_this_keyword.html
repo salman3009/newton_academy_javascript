@@ -11,6 +11,31 @@ https://my.newtonschool.co/playground/code/mol5tvesyyvg?lecture_hash=cipp43cnaxd
 function solve(obj, a, b){
    // obj: object of class FooBar, with foo and bar as its attributes set from input
    // should somehow return the following
-    return obj.foo + obj.bar + func.bind(obj,a,b)();
+    return obj.foo + obj.bar + func.call(obj,a,b);
 }
 </script>
+
+
+
+<!-- <script>
+    class FooBar{
+    // your implementation here
+    constructor(foo,bar){
+        this.foo = foo;
+        this.bar = bar;
+    }
+}
+ 
+function func(a,b){
+    console.log(this);
+    return a+b;
+}
+
+function solve(obj, a, b){
+   // obj: object of class FooBar, with foo and bar as its attributes set from input
+   // should somehow return the following
+   // return obj.foo + obj.bar + func(a, b);
+   return obj.foo + obj.bar + func.call(obj,a,b);
+}
+console.log(solve({foo:1,bar:1},4,4));
+</script> -->
