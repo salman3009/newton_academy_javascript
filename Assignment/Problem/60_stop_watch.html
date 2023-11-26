@@ -1,58 +1,65 @@
+https://my.newtonschool.co/playground/markup/nqkxkbj0yty8?lecture_hash=t3w7u0gn2nzi
+
 <div id="time"></div>
 <button onclick="start()" id="start">start</button>
 <button onclick="pause()" id="pause">pause</button>
 <button onclick="stop()" id="stop">stop</button>
 
 <script>
-    function setTime() {
-     timerDiv.innerText = (parseInt((time / 3600) % 60) < 10 ? "0" : "") + parseInt((time / 3600) % 60) + ":" + (parseInt((time / 60) % 60) < 10 ? "0" : "") + parseInt((time / 60) % 60) + ":" + (parseInt((time) % 60) < 10 ? "0" : "") + parseInt((time) % 60)
+  // javascript code goes here
+let pauseButton = document.querySelector("#pause");
+pauseButton.setAttribute('disabled',true);
+let stopButton = document.querySelector('#stop');
+stopButton.setAttribute('disabled',true);
+let startButton = document.querySelector("#start");
+let pauseFlag = false;
+let count =0;
+let timer = document.querySelector("#time");
+let timerID;
+let hours = 0;
+let minutes = 0;
+let seconds = 0;
+timer.innerText = '00:00:00';
 
+function start(){
+timerLogic();
+startButton.setAttribute('disabled',true);
+pauseButton.removeAttribute('disabled');
+stopButton.removeAttribute('disabled');
 }
 
-function start() {
-    if (!timerOn) {
-        timerId = setInterval(() => {
-            time = time + 0.1;
-            setTime();
-        }, 100);
-        document.getElementById('start').setAttribute('disabled', true)
-        document.getElementById('stop').removeAttribute('disabled')
-        document.getElementById('pause').removeAttribute('disabled')
-
-        timerOn = true;
-    }
+function pause(){
+     if(pauseFlag){
+         pauseButton.innerText = "pause";
+         start();
+         pauseFlag = false;    
+     }
+     else{
+         clearInterval(timerID);
+         pauseFlag = true;
+         pauseButton.innerText = "continue";
+     }
 }
 
-function stop() {
-    document.getElementById('start').removeAttribute('disabled')
-    document.getElementById('pause').setAttribute('disabled', true)
-    document.getElementById('pause').innerText = "pause"
-    document.getElementById('stop').setAttribute('disabled', true)
-    clearInterval(timerId)
-    time = 0;
-    setTime();
-    timerOn = false;
+function stop(){
+pauseButton.setAttribute('disabled',true);
+stopButton.setAttribute('disabled',true);
+startButton.removeAttribute('disabled');
+pauseButton.innerText = "pause";
+clearInterval(timerID);
+timer.innerText = '00:00:00';
+count=0;
 }
 
-
-function pause() {
-
-    if (timerOn) {
-        clearInterval(timerId)
-        timerOn = false;
-        document.getElementById('pause').innerText = "continue"
-    }
-    else {
-        document.getElementById('pause').innerText = "pause"
-        start()
-    }
+function timerLogic(){
+  timerID = setInterval(function(){
+         count = count + 0.1;
+         seconds = ((parseInt((count)%60) < 10) ? "0":'') + parseInt((count)%60);
+         minutes = ((parseInt((count/60)%60) < 10) ? "0":'') + parseInt((count/60)%60);
+         hours = ((parseInt((count/3600)%60) < 10) ? "0":'') + parseInt((count/3600)%60);
+         timer.innerText = `${hours}:${minutes}:${seconds}`;
+    },100)
 }
-
-let time = 0;
-let timerOn = false;
-let timerDiv = document.getElementById('time')
-document.getElementById('pause').setAttribute('disabled', true)
-document.getElementById('stop').setAttribute('disabled', true)
-setTime()
-let timerId;
 </script>
+
+
