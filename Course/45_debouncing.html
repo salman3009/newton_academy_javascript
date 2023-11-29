@@ -11,6 +11,7 @@
     //It ensures that one notification is made for an event that fires multiples times.
     
     function debounce(func,timeout = 300){
+        debugger;
         let timer;
         return (...args)=>{
             clearTimeout(timer);
