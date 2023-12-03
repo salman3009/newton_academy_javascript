@@ -12,11 +12,11 @@ const clickHandler = () => {
 const throttle = (callbackFn, delay) => {
   let wait = false;
 
-  return (...args) => {
+  return function(){
     if (wait) {
         return;
     }
-
+    const args = arguments;
     callbackFn(...args);
     wait = true;
     setTimeout(() => {

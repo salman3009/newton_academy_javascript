@@ -12,7 +12,7 @@
 	
 	// Previously called time of the function
 	let prev = 0; 
-	return (...args) => {
+	return function() {
 		// Current called time of the function
 		let now = new Date().getTime(); 
 	
@@ -28,6 +28,7 @@
 		// "..." is the spread operator here 
 		// returning the function with the 
 		// array of arguments
+		const args = arguments;
 		return func(...args); 
 		}
 	}

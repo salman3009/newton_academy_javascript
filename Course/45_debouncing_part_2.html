@@ -13,11 +13,12 @@
     function debounce(func,delay = 300){
         let debounceTimer 
         return function(){
-            const context = this
-            const args = arguments 
+            console.log(this);
+            const args = arguments;
+            console.log(args);
                 clearTimeout(debounceTimer) 
                     debounceTimer 
-                = setTimeout(() => func.apply(context, args), delay) 
+                = setTimeout(() => func.apply(this, args), delay) 
         }
     }
 
