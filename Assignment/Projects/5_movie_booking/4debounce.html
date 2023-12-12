@@ -542,24 +542,22 @@ favoritesTab.addEventListener("click", switchTab);
 
 // Part 03 from here
 
-function debounce(func) {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer); // clear existing timer
-    // create a new time till the user is typing
-    timer = setTimeout(() => {
-      func.apply(this, args);
-    }, 1000);
-  };
-}
+function debounce(func,delay = 1000){
+        let debounceTimer 
+        return function(){
+            console.log(this);
+            const args = arguments;
+            console.log(args);
+                clearTimeout(debounceTimer) 
+                    debounceTimer 
+                = setTimeout(() => func.apply(this, args), delay) 
+        }
+    }
 
-const onSearchChange = async (event) => {
+const onSearchChange =  (event) => {
+  debugger;
   let { value } = event.target;
-  if (!value) {
-    renderMovies(movies);
-  } else {
-    await searchMovies(value);
-  }
+  searchMovies(value);
 };
 
 const debounceSearch = debounce((event) => onSearchChange(event));

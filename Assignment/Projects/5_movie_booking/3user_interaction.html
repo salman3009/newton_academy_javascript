@@ -299,7 +299,9 @@ const renderMovies = (movies) => {
         </section>`;
         const favouriteIconBtn = listItem.querySelector(".favorite-icon");
         favouriteIconBtn.addEventListener("click", (event) => {
+          debugger;
           const { id } = event.target;
+          console.log(id);
           if (favouriteIconBtn.classList.contains("fa-solid")) {
             // removing movie name to the localStorage and from favourite array
             removeMovieNameFromLocalStorage(id);
@@ -379,6 +381,7 @@ function sortByRating() {
 // Get the sort by rating button element by its id
 sortByRatingButton.addEventListener("click", sortByRating);
 
+const pagination = document.querySelector("div.pagination"); 
 const prevButton = document.querySelector("button#prev-button"); 
 const pageNumberButton = document.querySelector("button#page-number-button"); 
 const nextButton = document.querySelector("button#next-button");
@@ -475,9 +478,7 @@ const showFavourites = (favMoviesName) => {
         <p class="vote-count">Votes: ${vote_count}</p>
         <p class="vote-average">Rating: ${vote_average}</p>
       </section>
-      <i class="favorite-icon fa-solid fa-xmark fa-xl xmark ${
-        favorites.includes(title) ? "fa-solid" : null
-      }" id="${title}"></i>
+      <i class="favorite-icon fa-solid fa-xmark fa-xl xmark" id="${title}"></i>
     </section>`;
   
   const removeFromWishlistBtn = listItem.querySelector(".xmark");
